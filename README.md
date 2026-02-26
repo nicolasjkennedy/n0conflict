@@ -2,7 +2,7 @@
 
 > AI-powered Git merge conflict resolver.
 
-[![CI](https://github.com/yourusername/n0conflict/actions/workflows/ci.yml/badge.svg)](https://github.com/yourusername/n0conflict/actions/workflows/ci.yml)
+[![CI](https://github.com/nicolasjkennedy/n0conflict/actions/workflows/ci.yml/badge.svg)](https://github.com/nicolasjkennedy/n0conflict/actions/workflows/ci.yml)
 [![PyPI](https://img.shields.io/pypi/v/n0conflict)](https://pypi.org/project/n0conflict/)
 [![Python](https://img.shields.io/pypi/pyversions/n0conflict)](https://pypi.org/project/n0conflict/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
@@ -110,7 +110,7 @@ When a conflict cannot be resolved:
 Contributions are welcome. Please open an issue before submitting a pull request for large changes.
 
 ```bash
-git clone https://github.com/yourusername/n0conflict
+git clone https://github.com/nicolasjkennedy/n0conflict
 cd n0conflict
 pip install -e ".[dev]"
 pytest
