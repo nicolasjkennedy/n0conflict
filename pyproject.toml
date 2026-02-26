@@ -38,9 +38,9 @@ dev = [
 n0conflict = "n0conflict.main:main"
 
 [project.urls]
-Homepage = "https://github.com/yourusername/n0conflict"
-Repository = "https://github.com/yourusername/n0conflict"
-Issues = "https://github.com/yourusername/n0conflict/issues"
+Homepage = "https://github.com/nicolasjkennedy/n0conflict"
+Repository = "https://github.com/nicolasjkennedy/n0conflict"
+Issues = "https://github.com/nicolasjkennedy/n0conflict/issues"
 
 [tool.hatch.version]
 path = "n0conflict/__init__.py"
