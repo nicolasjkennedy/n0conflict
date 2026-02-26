@@ -20,7 +20,17 @@ from .resolver import AIResolver
 
 app = typer.Typer(
     name="n0conflict",
-    help="AI-powered Git merge conflict resolver.",
+    help=(
+        "AI-powered Git merge conflict resolver.\n\n"
+        "[bold]API Key Setup[/]\n\n"
+        "  [bold]macOS / Linux:[/]\n"
+        "    export ANTHROPIC_API_KEY='sk-ant-...'\n\n"
+        "  [bold]Windows (PowerShell):[/]\n"
+        "    $env:ANTHROPIC_API_KEY = 'sk-ant-...'\n\n"
+        "  [bold]Windows (Command Prompt):[/]\n"
+        "    set ANTHROPIC_API_KEY=sk-ant-...\n\n"
+        "You can also use [bold]N0CONFLICT_API_KEY[/] as an alternative variable name."
+    ),
     add_completion=False,
     rich_markup_mode="rich",
 )
