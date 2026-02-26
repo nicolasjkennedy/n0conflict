@@ -91,6 +91,11 @@ def resolve(
 
     content = file.read_text(encoding="utf-8")
     conflicts = parse_conflicts(content)
+
+    if not conflicts:
+        rprint(f"[green]✓[/] No conflicts found in [bold]{file}[/]")
+        return
+
     language = detect_language(file)
     resolver = _get_resolver()
 
