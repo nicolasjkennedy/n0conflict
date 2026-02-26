@@ -149,9 +149,12 @@ def resolve(
 
 @app.command()
 def scan(
-    path: Path = typer.Argument(Path("."), help="Repository root to scan (default: current directory)."),
+    path: Path = typer.Argument(None, help="Repository root to scan (default: current directory)."),
 ) -> None:
     """Scan a repository for all files containing merge conflicts."""
+    if path is None:
+        path = Path.cwd()
+    path = path.resolve()
     # Prefer Git index (accurate) with a text-scan fallback.
     conflicted = get_conflicted_files(path)
 

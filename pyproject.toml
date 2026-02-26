@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "n0conflict"
-version = "0.1.2"
+version = "0.1.3"
 description = "AI-powered Git merge conflict resolver"
 readme = "README.md"
 requires-python = ">=3.10"
