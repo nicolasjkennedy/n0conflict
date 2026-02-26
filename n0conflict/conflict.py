@@ -27,7 +27,7 @@ def parse_conflicts(content: str) -> list[ConflictBlock]:
     while i < len(lines):
         line = lines[i]
 
-        if not line.startswith("<<<<<<<"):
+        if not line.startswith("<<<<<<< "):
             i += 1
             continue
 

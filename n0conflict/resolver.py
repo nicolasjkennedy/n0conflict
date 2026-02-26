@@ -65,6 +65,12 @@ class AIResolver:
             messages=[{"role": "user", "content": user_message}],
         )
 
+        if not response.content:
+            return ResolutionResult(
+                resolved=False,
+                content="",
+                explanation="API returned an empty response.",
+            )
         return _parse_response(response.content[0].text)
 
 

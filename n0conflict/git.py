@@ -36,7 +36,7 @@ def get_conflicted_files(repo_path: Path) -> list[Path]:
 
         repo = git.Repo(repo_path, search_parent_directories=True)
         root = Path(repo.working_tree_dir)
-        return [root / name for name in repo.index.unmerged_blobs().keys()]
+        return [(root / Path(name)).resolve() for name in repo.index.unmerged_blobs().keys()]
     except Exception:
         return []
 

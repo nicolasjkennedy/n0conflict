@@ -4,6 +4,7 @@ import os
 from pathlib import Path
 from typing import Optional
 
+import anthropic
 import typer
 from rich import print as rprint
 from rich.console import Console
@@ -89,7 +90,12 @@ def resolve(
         rprint(f"[green]✓[/] No conflicts found in [bold]{file}[/]")
         return
 
-    content = file.read_text(encoding="utf-8")
+    try:
+        content = file.read_text(encoding="utf-8")
+    except UnicodeDecodeError:
+        rprint(f"[bold red]Error:[/] Cannot read {file} — invalid UTF-8 encoding.")
+        raise typer.Exit(code=1)
+
     conflicts = parse_conflicts(content)
 
     if not conflicts:
@@ -113,11 +119,18 @@ def resolve(
             console=console,
         ) as progress:
             progress.add_task("resolve", total=None)
-            result = resolver.resolve(conflict, language=language)
+            try:
+                result = resolver.resolve(conflict, language=language)
+            except anthropic.APIError as e:
+                all_resolved = False
+                rprint(f"  [red]✗[/] Conflict {idx}: API error — {e}")
+                continue
 
         if result.resolved:
             rprint(f"  [green]✓[/] Conflict {idx}: {result.explanation}")
-            resolved_content = resolved_content.replace(conflict.raw, result.content, 1)
+            pos = resolved_content.find(conflict.raw)
+            if pos != -1:
+                resolved_content = resolved_content[:pos] + result.content + resolved_content[pos + len(conflict.raw):]
         else:
             all_resolved = False
             rprint(f"  [red]✗[/] Conflict {idx}: cannot be resolved automatically")
@@ -212,6 +225,10 @@ def explain(
 
     content = file.read_text(encoding="utf-8")
     conflicts = parse_conflicts(content)
+
+    if not conflicts:
+        rprint(f"[green]✓[/] No conflicts found in [bold]{file}[/]")
+        return
 
     rprint(
         f"\n[bold]{len(conflicts)} conflict block(s)[/] in [cyan]{file}[/] "
