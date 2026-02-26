@@ -183,7 +183,11 @@ def scan(
     for f in sorted(conflicted):
         try:
             count = len(parse_conflicts(f.read_text(encoding="utf-8", errors="replace")))
-            table.add_row(str(f.relative_to(path)), str(count))
+            try:
+                display = str(f.resolve().relative_to(path))
+            except ValueError:
+                display = str(f)
+            table.add_row(display, str(count))
         except OSError:
             pass
 
