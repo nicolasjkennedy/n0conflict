@@ -22,14 +22,27 @@ app = typer.Typer(
     name="n0conflict",
     help=(
         "AI-powered Git merge conflict resolver.\n\n"
-        "[bold]API Key Setup[/]\n\n"
+        "Requires an Anthropic API key. Get one at [bold]https://console.anthropic.com[/]\n\n"
+
+        "[bold]── Step 1: Set your API key ──────────────────────────────[/]\n\n"
         "  [bold]macOS / Linux:[/]\n"
         "    export ANTHROPIC_API_KEY='sk-ant-...'\n\n"
         "  [bold]Windows (PowerShell):[/]\n"
         "    $env:ANTHROPIC_API_KEY = 'sk-ant-...'\n\n"
         "  [bold]Windows (Command Prompt):[/]\n"
         "    set ANTHROPIC_API_KEY=sk-ant-...\n\n"
-        "You can also use [bold]N0CONFLICT_API_KEY[/] as an alternative variable name."
+
+        "[bold]── Step 2: Find conflicted files ─────────────────────────[/]\n\n"
+        "  n0conflict scan\n"
+        "  n0conflict scan /path/to/repo\n\n"
+
+        "[bold]── Step 3: Resolve conflicts ──────────────────────────────[/]\n\n"
+        "  Preview the result without saving:\n"
+        "    n0conflict resolve file.py --dry-run\n\n"
+        "  Save the resolved file:\n"
+        "    n0conflict resolve file.py --write\n\n"
+        "  Inspect conflicts without resolving:\n"
+        "    n0conflict explain file.py\n"
     ),
     add_completion=False,
     rich_markup_mode="rich",
