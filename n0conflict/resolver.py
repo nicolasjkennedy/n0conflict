@@ -79,7 +79,7 @@ def _parse_response(text: str) -> ResolutionResult:
     text = text.strip()
 
     if text.startswith("RESOLVED:"):
-        content = text[len("RESOLVED:"):].strip()
+        content = text[len("RESOLVED:"):].lstrip("\r\n").rstrip() + "\n"
         return ResolutionResult(
             resolved=True,
             content=content,
