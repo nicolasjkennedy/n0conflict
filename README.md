@@ -3,8 +3,8 @@
 > AI-powered Git merge conflict resolver.
 
 [![CI](https://github.com/nicolasjkennedy/n0conflict/actions/workflows/ci.yml/badge.svg)](https://github.com/nicolasjkennedy/n0conflict/actions/workflows/ci.yml)
-[![PyPI](https://img.shields.io/pypi/v/n0conflict)](https://pypi.org/project/n0conflict/)
-[![Python](https://img.shields.io/pypi/pyversions/n0conflict)](https://pypi.org/project/n0conflict/)
+[![PyPI](https://img.shields.io/pypi/v/n0conflict?style=flat-square)](https://pypi.org/project/n0conflict/)
+[![Python](https://img.shields.io/pypi/pyversions/n0conflict?style=flat-square)](https://pypi.org/project/n0conflict/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 `n0conflict` resolves Git merge conflicts using AI. Instead of forcing one side over the other, it reads both versions of the conflicting code and produces a single output that preserves the intent of each. When a conflict truly cannot be resolved automatically, it tells you why.
